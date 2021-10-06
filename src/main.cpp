@@ -27,6 +27,19 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
     return std::move(contents);
 }
 
+void ReadUserInputData(char * message, float coord_var){
+    printf(message);
+    std::cin >> coord_var;
+    if (coord_var >= 1){
+        std::cout << "\n" ;
+    }
+    else {
+        printf("Wrong value. Valid values range from 1 to.\n");
+        ReadUserInputData(message, coord_var);
+    }
+    
+}
+
 int main(int argc, const char **argv)
 {    
     std::string osm_data_file = "";
@@ -52,16 +65,16 @@ int main(int argc, const char **argv)
             osm_data = std::move(*data);
     }
     //Complete this TODO to satisfy Project Rubric Criterias of User Input
-  
+
     // TODO 1: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below in place of 10, 10, 90, 90.
 	float start_x, start_y, end_x, end_y;
   
-  	std::cin >> start_x;
-  	std::cin >> start_y;
-  	std::cin >> end_x;
-  	std::cin >> end_y;
+  	ReadUserInputData("Enter start x: ", start_x);
+  	ReadUserInputData("Enter start y: ", start_y);
+  	ReadUserInputData("Enter end x: ", end_x);
+  	ReadUserInputData("Enter end y: ", end_y);
     // Build Model.
     RouteModel model{osm_data};
 
