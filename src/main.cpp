@@ -30,11 +30,11 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
 void ReadUserInputData(char * message, float coord_var){
     printf(message);
     std::cin >> coord_var;
-    if (coord_var >= 1){
+    if (coord_var >= 1 && coord_var <= 100){
         std::cout << "\n" ;
     }
     else {
-        printf("Wrong value. Valid values range from 1 to.\n");
+        printf("Wrong value. Valid values range from 1 to 99.\n");
         ReadUserInputData(message, coord_var);
     }
     
